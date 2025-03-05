@@ -54,6 +54,10 @@ loader.load(
         console.error('❌ Hiba a GLB fájl betöltésekor:', error);
     }
 );
+model.traverse(function (child) {
+    console.log("📌 Komponens neve:", child.name);
+});
+
 
 // 📌 Animációs ciklus
 function animate() {
