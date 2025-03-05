@@ -3,24 +3,24 @@ const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 2000);
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setClearColor(0xffffff); // 🔹 Háttér fehérre állítása
+renderer.setClearColor(0xdddddd); // 🔹 Háttér világos szürke
 document.getElementById("3d-container").appendChild(renderer.domElement);
 
-// 📌 Fények hozzáadása (optimális világítás)
-const ambientLight = new THREE.AmbientLight(0xffffff, 1.5);
+// 📌 Erősebb fények hozzáadása
+const ambientLight = new THREE.AmbientLight(0xffffff, 5); // 🔹 Erősebb alapfény
 scene.add(ambientLight);
 
-const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
-directionalLight.position.set(0, 300, 300);
+const directionalLight = new THREE.DirectionalLight(0xffffff, 5);
+directionalLight.position.set(100, 200, 100);
 scene.add(directionalLight);
 
-const pointLight = new THREE.PointLight(0xffffff, 3, 500);
-pointLight.position.set(100, 200, 100);
+const pointLight = new THREE.PointLight(0xffffff, 10, 1000);
+pointLight.position.set(0, 300, 300);
 scene.add(pointLight);
 
 // 📌 Kamera beállítása
-camera.position.set(0, 100, 300); // 🔹 Kamera normális pozícióban
-camera.lookAt(0, 0, 0); // 🔹 A kamera a modell középpontját nézi
+camera.position.set(0, 200, 500); // 🔹 Távolabb helyezzük a kamerát
+camera.lookAt(0, 0, 0);
 
 // 📌 OBJ modell betöltése
 const loader = new THREE.OBJLoader();
@@ -30,16 +30,16 @@ loader.load(
     'https://bazsamo.github.io/3dmodel/NKdynamic_v7.obj',
     function (object) {
         model = object;
-        model.position.set(0, 0, -100); // 🔹 Modell a kamera elé
-        model.scale.set(5, 5, 5); // 🔹 Kisebb méret
+        model.position.set(0, 0, 0); // 🔹 Modell középre helyezése
+        model.scale.set(10, 10, 10); // 🔹 Normál méret beállítása
 
-        // 📌 Ha a modellnek nincs anyaga, világos színt adunk neki
+        // 📌 Ha a modellnek nincs anyaga, fehér színt adunk neki
         model.traverse(function (child) {
             if (child.isMesh) {
                 child.material = new THREE.MeshStandardMaterial({
-                    color: 0xaaaaaa, // 🔹 Világos szürke (természetesebb)
+                    color: 0xffffff, // 🔹 Fehér, hogy biztosan látszódjon
                     metalness: 0.1,
-                    roughness: 0.9
+                    roughness: 0.8
                 });
             }
         });
