@@ -31,7 +31,7 @@ loader.load(
     function (gltf) {
         model = gltf.scene;
         model.position.set(0, 0, 0);
-        model.scale.set(10, 10, 10); // 🔹 Megnövelt méret
+        model.scale.set(500, 500, 500); // 🔹 Megnövelt méret
         scene.add(model);
         console.log("✅ 3D modell betöltve:", model);
 
