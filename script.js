@@ -27,19 +27,12 @@ const loader = new THREE.OBJLoader();
 let model;
 
 loader.load(
-    'https://github.com/bazsamo/3dmodel/NKdynamic_v7.obj',  // Ellenőrizd, hogy a fájl elérhető-e!
-    function (object) {
-        object.traverse(function (child) {
-            if (child.isMesh) {
-                child.material = new THREE.MeshStandardMaterial({ color: 0xaaaaaa }); // 🔹 Alapértelmezett szürke szín
-            }
-        });
-
+    'https://bazsamo.github.io/3dmodels/NKdynamic_v7.obj',  // Ellenőrizd, hogy a fájl elérhető-e!
+     function (object) {
         model = object;
-        model.scale.set(10, 10, 10);  // 🔹 Ha a modell túl kicsi, növeld
-        model.position.set(0, 0, 0);  // 🔹 Biztosítsd, hogy a középpontban legyen
+        model.scale.set(10, 10, 10);
+        model.position.set(0, 0, 0);
         scene.add(model);
-
         console.log("3D modell betöltve:", model);
     },
     function (xhr) {
