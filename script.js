@@ -27,7 +27,7 @@ const loader = new THREE.GLTFLoader();
 let model;
 
 loader.load(
-    'https://bazsamo.github.io/3dmodel/NKdynamic_v7.glb',  // 🔹 `.glb` fájl neve!
+    'https://bazsamo.github.io/3dmodel/UKdynamic_v8.0.glb',  // 🔹 `.glb` fájl neve!
     function (gltf) {
         model = gltf.scene;
         model.position.set(0, 0, 0);
