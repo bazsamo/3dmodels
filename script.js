@@ -26,7 +26,7 @@ const loader = new THREE.OBJLoader();
 let model;
 
 loader.load(
-    'https://bazsamo.github.io/3dmodel/NKdynamic_v7.obj', // 🔹 Ellenőrizd, hogy az OBJ elérhető-e!
+    'https://bazsamo.github.io/3dmodels/NKdynamic_v7.obj', // 🔹 Ellenőrizd, hogy az OBJ elérhető-e!
     function (object) {
         model = object;
         model.position.set(0, 0, 0); // 🔹 Modell középre helyezése (méretezés nélkül)
