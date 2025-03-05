@@ -3,7 +3,7 @@ const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 20000);
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setClearColor(0xeeeeee); // 🔹 Világos háttér
+renderer.setClearColor(0xeeeeee);
 document.getElementById("3d-container").appendChild(renderer.domElement);
 
 // 📌 Fények hozzáadása
@@ -22,12 +22,12 @@ scene.add(pointLight);
 camera.position.set(0, 2000, 8000);
 camera.lookAt(0, 0, 0);
 
-// 📌 GLB/GLTF modell betöltése
+// 📌 GLB modell betöltése (Most már működni fog!)
 const loader = new THREE.GLTFLoader();
 let model;
 
 loader.load(
-    'https://bazsamo.github.io/3dmodels/NKdynamic_v7.glb',  // 🔹 Itt a `.glb` fájl neve!
+    'https://bazsamo.github.io/3dmodel/NKdynamic_v7.glb',  // 🔹 `.glb` fájl neve!
     function (gltf) {
         model = gltf.scene;
         model.position.set(0, 0, 0);
@@ -54,7 +54,7 @@ window.updateModel = function () {
         let height = parseFloat(document.getElementById("heightInput").value);
 
         model.traverse(function (child) {
-            if (child.name.includes("DynamicComponent")) {  // 🔹 Itt kell majd a valódi név!
+            if (child.name.includes("DynamicComponent")) {  // 🔹 Cseréld le a valódi komponens névre!
                 child.scale.set(width, height, width); 
                 console.log(`📏 ${child.name} méretezése: Szélesség: ${width}, Magasság: ${height}`);
             }
