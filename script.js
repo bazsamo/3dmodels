@@ -22,14 +22,20 @@ const loader = new THREE.OBJLoader();
 let model;
 
 loader.load(
-    'NKdynamic_v7.obj', // A fájl közvetlenül a GitHub Pages-ről töltődik be
+    'NKdynamic_v7.obj', 
     function (object) {
+        object.traverse(function (child) {
+            if (child.isMesh) {
+                child.material = new THREE.MeshStandardMaterial({ color: 0xaaaaaa }); // 🔹 Szürke szín
+            }
+        });
         model = object;
-        model.scale.set(1, 1, 1); 
+        model.scale.set(10, 10, 10);
         model.position.set(0, 0, 0);
         scene.add(model);
-        console.log("3D modell betöltve:", model);
-    },
+    }
+);
+
     function (xhr) {
         console.log((xhr.loaded / xhr.total * 100) + '% betöltve');
     },
