@@ -27,7 +27,7 @@ const loader = new THREE.OBJLoader();
 let model;
 
 loader.load(
-    'NKdynamic_v7.obj',  // Ellenőrizd, hogy a fájl elérhető-e!
+    'https://github.com/bazsamo/3dmodel/NKdynamic_v7.obj',  // Ellenőrizd, hogy a fájl elérhető-e!
     function (object) {
         object.traverse(function (child) {
             if (child.isMesh) {
