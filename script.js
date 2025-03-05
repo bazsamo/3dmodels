@@ -22,7 +22,7 @@ const loader = new THREE.OBJLoader();
 let model;
 
 loader.load(
-    'model.obj', // A fájl közvetlenül a GitHub Pages-ről töltődik be
+    'NKdynamic_v7.obj', // A fájl közvetlenül a GitHub Pages-ről töltődik be
     function (object) {
         model = object;
         model.scale.set(1, 1, 1); 
