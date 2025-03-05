@@ -1,9 +1,9 @@
 // 📌 Three.js jelenet létrehozása
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 5000);
+const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 20000);
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setClearColor(0xeeeeee); // 🔹 Enyhén szürke háttér
+renderer.setClearColor(0xeeeeee); // 🔹 Világos háttér
 document.getElementById("3d-container").appendChild(renderer.domElement);
 
 // 📌 Erősebb fények hozzáadása
@@ -11,15 +11,15 @@ const ambientLight = new THREE.AmbientLight(0xffffff, 2);
 scene.add(ambientLight);
 
 const directionalLight = new THREE.DirectionalLight(0xffffff, 3);
-directionalLight.position.set(0, 500, 500);
+directionalLight.position.set(0, 1000, 2000);
 scene.add(directionalLight);
 
-const pointLight = new THREE.PointLight(0xffffff, 5, 1000);
-pointLight.position.set(100, 200, 100);
+const pointLight = new THREE.PointLight(0xffffff, 5, 5000);
+pointLight.position.set(500, 500, 500);
 scene.add(pointLight);
 
-// 📌 Kamera távolabb helyezése
-camera.position.set(0, 500, 2000); // 🔹 Extra távolság, hogy az egész modell látszódjon!
+// 📌 Kamera extrém távolra helyezése
+camera.position.set(0, 2000, 8000); // 🔹 Most már garantáltan messze lesz!
 camera.lookAt(0, 0, 0);
 
 // 📌 OBJ modell betöltése
@@ -31,13 +31,12 @@ loader.load(
     function (object) {
         model = object;
         model.position.set(0, 0, 0); // 🔹 Modell középre helyezése
-        model.scale.set(5, 5, 5); // 🔹 Modell méretének csökkentése
+        model.scale.set(1, 1, 1); // 🔹 Kisebb méret, hogy biztosan beleférjen a képbe
 
-        // 📌 Ha a modellnek nincs anyaga, világosszürke színt kap
         model.traverse(function (child) {
             if (child.isMesh) {
                 child.material = new THREE.MeshStandardMaterial({
-                    color: 0x777777, // 🔹 Világosszürke
+                    color: 0x777777, // 🔹 Világosszürke, hogy ne legyen túl világos
                     metalness: 0.3,
                     roughness: 0.6
                 });
@@ -55,11 +54,11 @@ loader.load(
     }
 );
 
-// 📌 Animációs ciklus (forgatás hozzáadása)
+// 📌 Animációs ciklus (modell forgatása)
 function animate() {
     requestAnimationFrame(animate);
     if (model) {
-        model.rotation.y += 0.01; // 🔹 A modell lassan forog
+        model.rotation.y += 0.02; // 🔹 Gyorsabb forgatás, hogy biztosan észrevegyük
     }
     renderer.render(scene, camera);
 }
