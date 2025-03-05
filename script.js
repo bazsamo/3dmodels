@@ -19,7 +19,7 @@ pointLight.position.set(100, 200, 100);
 scene.add(pointLight);
 
 // 📌 Kamera távolabb helyezése
-camera.position.set(0, 300, 800); // 🔹 Távolabb tettük, hogy az egész modell látszódjon
+camera.position.set(0, 500, 2000); // 🔹 Extra távolság, hogy az egész modell látszódjon!
 camera.lookAt(0, 0, 0);
 
 // 📌 OBJ modell betöltése
@@ -31,7 +31,7 @@ loader.load(
     function (object) {
         model = object;
         model.position.set(0, 0, 0); // 🔹 Modell középre helyezése
-        model.scale.set(10, 10, 10); // 🔹 Normál méret beállítása
+        model.scale.set(5, 5, 5); // 🔹 Modell méretének csökkentése
 
         // 📌 Ha a modellnek nincs anyaga, világosszürke színt kap
         model.traverse(function (child) {
