@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Modell Néző</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/OBJLoader.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Interaktív 3D Modell</h1>
+    <div id="3d-container"></div>
+
+    <form>
+        <label>Szélesség (m): <input id="widthInput" type="number" value="1"></label>
+        <label>Magasság (m): <input id="heightInput" type="number" value="1"></label>
+        <button type="button" onclick="updateModel()">Frissítés</button>
+    </form>
+
+    <script src="script.js"></script>
+</body>
+</html>
